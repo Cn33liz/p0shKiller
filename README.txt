@@ -8,7 +8,7 @@ ______ \   _  \   _____|  |__ |    |/ _|__|  | |  |   ___________
 
 Windows 10 PowerShell5 - Amsi/UAC Bypass/Backdoor/Exploit using DLL Hijacking
 
-Proof of Concept exploit to bypass Microsoft latest AntiMalware Scan Interface technology within powershell5 on Windows 10.
+Proof of Concept exploit to bypass Microsoft latest AntiMalware Scan Interface technology within PowerShell5 on Windows 10.
 With this exploit/patch applied, you can take control over powershells program flow by using DLL Hijacking and UAC Bypasstechniques. Every time powershell is started, a local admin named BadAss with password FacePalm01 will be added to the system (when run by an non elevated administrator account) 
 and a reverse (SYSTEM) https meterpreter session (default 192.168.1.120) will be started every hour using a scheduled task.
 
