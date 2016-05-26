@@ -29,9 +29,11 @@ Requirements:
 This Exploit contains 5 components (and 1 python script):
 
 p0shKiller.exe	- The main tool to apply the Patch (only needed once).
-UacBypass.dll	- Will be injected into explorer.exe process and uses IFileOperation (COM Interface) to copy needed DLL's (only needed once).
+UacBypass.dll	- Will be injected into explorer.exe process and uses IFileOperation (COM Interface) to copy needed DLL's 
+                  (only needed once).
 Amsi.dll	- This fake DLL is copied into: C:\Windows\System32\WindowsPowerShell\v1.0, and is the main vulnerable component. 
-ntwdblib.dll	- Fake ntwdblib.dll copied into C:\Windows\System32, which is used by cliconfg.exe (elevated process) to bypass UAC.
+ntwdblib.dll	- Fake ntwdblib.dll copied into C:\Windows\System32, which is used by cliconfg.exe (elevated process) 
+                  to bypass UAC.
 MPAmsiRun.exe	- Xor'ed Meterpreter Shellcode payload that is copied into C:\Windows\System32 and called by Amsi.dll.
 
 XORMeter.py	- Python Script to generate your own Meterpreter Payload (MPAmsiRun.exe) By @vvalien1
